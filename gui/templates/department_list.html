@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<a href="{% url 'department_create' %}" class="btn btn-success mb-3">Create Department</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name<th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for dept in departments %}
+        <tr>
+            <td>{{ dept.name }}</td>
+            <td>
+                <a href="{% url 'department_update' dept.id %}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="{% url 'department_delete' dept.id %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
