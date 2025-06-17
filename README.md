@@ -1,5 +1,3 @@
-
-````markdown
 # Django Project Setup & API Documentation
 
 ## 🛠️ Project Setup Instructions
@@ -10,7 +8,7 @@ Follow these steps to set up and run the Django project locally:
 
 ```bash
 pip install -r requirements.txt
-````
+```
 
 ### 2. Apply Database Migrations
 
@@ -83,7 +81,7 @@ Authorization: Bearer <your_token_here>
 
 ### 🔹 Get All Departments
 
-**GET** `/api/v1/departments/1/`
+**GET** `/api/v1/departments/`
 
 **Headers:**
 
@@ -129,9 +127,9 @@ Authorization: Bearer <your_token_here>
 
 ## 📎 Notes
 
-* Ensure your virtual environment is activated before installing dependencies or running the server.
-* Update the port or domain in the URLs if your development server is configured differently.
-* Replace the sample JWT token with your actual token.
+- Ensure your virtual environment is activated before installing dependencies or running the server.
+- Update the port or domain in the URLs if your development server is configured differently.
+- Replace the sample JWT token with your actual token.
 
 ---
 
@@ -143,3 +141,57 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 > ⚠️ Use tokens securely and never expose them in production documentation or public repositories.
 
+---
+
+## 🧪 BDD Testing Steps
+
+To run BDD tests using Behave:
+
+```bash
+behave
+```
+
+Make sure you have Capybara and Selenium drivers installed if you're running browser-based tests in a Rails-like app.
+
+---
+
+## 🧰 Jenkinsfile (CI/CD Pipeline)
+
+```groovy
+pipeline {
+  agent any
+
+  environment {
+    PYTHON_ENV = 'development'
+  }
+
+  stages {
+    stage('Install Dependencies') {
+      steps {
+        sh 'pip install -r requirements.txt'
+      }
+    }
+
+    stage('Run Migrations') {
+      steps {
+        sh 'python manage.py migrate'
+      }
+    }
+
+    stage('Run Tests') {
+      steps {
+        sh 'pytest'
+        sh 'behave'
+      }
+    }
+  }
+
+  post {
+    always {
+      junit '**/test-reports/*.xml'
+    }
+  }
+}
+```
+
+---

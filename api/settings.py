@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'authentication',
     'departments',
     'gui',
+    'behave_django',
 ]
 
 SITE_ID = 1
