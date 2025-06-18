@@ -151,8 +151,17 @@ To run BDD tests using Behave:
 behave
 ```
 
-Make sure you have Capybara and Selenium drivers installed if you're running browser-based tests in a Rails-like app.
+### 🧪 Running Selenium Tests
 
+To run the Selenium tests for the project, use the following command:
+
+```bash
+python manage.py test tests.browser_departments
+```
+
+This will execute all browser-based integration tests located in the `tests/browser_departments.py` module.
+
+---
 ---
 
 ## 🧰 Jenkinsfile (CI/CD Pipeline)
